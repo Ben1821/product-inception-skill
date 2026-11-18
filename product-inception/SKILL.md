@@ -24,9 +24,27 @@ description: 把軟體產品構想變成一份能開工的「開工包」：要�
 - **收斂成定位**：「和 ___ 不同，我們專注 ___，因為 ___」，並用它說明各個收斂方向的差異。
 - **防線**：競品有的功能不等於首版需求，仍須通過 MVP 的必要性檢查。找不到同類產品可能代表機會，也可能代表沒有需求，兩種解讀都要寫出。案例只證明市場上有什麼，不證明目標使用者需要什麼。沒有搜尋工具時直接說明，請使用者提供案例，不憑記憶補足細節。
 
+## 文件分工與參數
+
+**開工包是唯一的預設產出**，一份看全貌。`assets/` 裡其他模板是詳細文件，只在以下情況使用：使用者用參數指定階段、要求「展開」或寫入檔案，或團隊需要正式規格。
+
+| 參數（接在呼叫指令後） | 做什麼 | 主要模板 |
+|---|---|---|
+| （無）或一段構想 | 從頭走，最後產出開工包 | 開工包 |
+| `探索` | 只做產品探索與找案例 | 開工包前半 |
+| `故事地圖` | 只做使用者故事地圖 | `02-user-story-map.md` |
+| `mvp` | 只做 MVP 範圍與驗收 | `03-mvp-spec.md` |
+| `架構` | 只做架構探索與 ADR | `04-architecture-overview.md`、ADR |
+| `規劃` | 只做開發待辦 | `05-product-backlog.md` |
+| `開工包` | 依現有對話或文件整理開工包 | 開工包 |
+| `展開` | 把開工包展開成詳細文件 | 02–05、ADR，依需要 |
+| `審查 <路徑>` | 審查既有文件，指出會改變結果的缺口 | 對應模板 |
+
+參數可用中文或英文、大小寫不拘，也可以是自然語言（例如「只看第 3 階段」）。指定單一階段時，仍帶入必要前提；缺少會改變結論的前提才回頭問。
+
 ## 啟動與互動
 
-- 本次參數為 `$ARGUMENTS`。一併考慮對話與使用者提供的文件。新構想從建造者情境與探索開始。接續既有專案時，先讀相關文件，整理已確認的決策及矛盾，再從最早影響本次工作的缺口切入。使用者指定階段時，聚焦該階段並帶入必要前提。
+- 本次參數為 `$ARGUMENTS`（依上表解讀）。一併考慮對話與使用者提供的文件。新構想從建造者情境與探索開始。接續既有專案時，先讀相關文件，整理已確認的決策及矛盾，再從最早影響本次工作的缺口切入。使用者指定階段時，聚焦該階段並帶入必要前提。
 - 先讀[判斷與提問規則](references/reasoning-rules.md)，再按當前階段讀下列方法。相對連結以 Skill 目錄為基準。只有在需要產出文件、對照例子或維護測試時，才讀相應資源。
 - 引導式討論每輪以一個最能改變決策的主要問題為主。簡短整理已知資訊和相關取捨，證據足夠便直接往下。產品名稱可暫定。
 - 維持「已確認事實／決策」「待驗證假設」「AI 建議」「待決策」的區別。把確認範圍、執行可行性和產品價值分別判定。對重大建議交代依據、取捨與會改變建議的證據。
@@ -68,7 +86,7 @@ description: 把軟體產品構想變成一份能開工的「開工包」：要�
 
 **Quality Gate**　能具體說明誰在何時要完成什麼、目前怎麼做、遇到什麼摩擦，以及想觀察哪種改善。若有多個互斥的首要對象或情境，優先釐清差異。
 
-讀[產品探索方法](references/product-discovery.md)。產出 [`01-product-brief.md`](assets/01-product-brief.md)。
+讀[產品探索方法](references/product-discovery.md)。結論記入開工包的「問題與現況」「定位與差異化」。
 
 ### Phase 2 — User Story Mapping（使用者故事地圖）
 
@@ -76,7 +94,7 @@ description: 把軟體產品構想變成一份能開工的「開工包」：要�
 
 **Quality Gate**　能用具體情境走完首版候選路徑，從起點到一次核心價值。指出會讓路徑斷掉的例外或依賴，以及尚未決定的切線。
 
-讀[故事地圖方法](references/story-mapping.md)。產出 [`02-user-story-map.md`](assets/02-user-story-map.md)。
+讀[故事地圖方法](references/story-mapping.md)。對話中以一行旅程與切線呈現；需要詳細文件時用 [`02-user-story-map.md`](assets/02-user-story-map.md)。
 
 ### Phase 3 — MVP Definition（MVP 定義）
 
@@ -86,7 +104,7 @@ description: 把軟體產品構想變成一份能開工的「開工包」：要�
 
 **Quality Gate**　開發者能判斷首版涵蓋範圍、如何驗收、何時算完成及何時停止發布。產品驗證至少有可觀察信號及量測方法。門檻未定時標出誰需決定、何時回看，以及哪些承諾因此仍為暫定。
 
-讀[MVP 範圍與驗收](references/mvp-definition.md)。產出 [`03-mvp-spec.md`](assets/03-mvp-spec.md)。
+讀[MVP 範圍與驗收](references/mvp-definition.md)。結論記入開工包的「首版範圍」「完成定義」；需要詳細文件時用 [`03-mvp-spec.md`](assets/03-mvp-spec.md)。
 
 ### Phase 4 — Architecture Exploration（初步架構探索）
 
@@ -94,7 +112,7 @@ description: 把軟體產品構想變成一份能開工的「開工包」：要�
 
 **Quality Gate**　團隊能沿著核心流程指出資料流、責任與邊界，說明選項代價、尚未定案的原因，以及哪些技術風險必須在承諾實作或發布前處理。
 
-讀[架構取捨與 ADR](references/architecture-exploration.md)。產出 [`04-architecture-overview.md`](assets/04-architecture-overview.md) 與必要的 [`adr/ADR-001-*.md`](assets/adr-template.md)。
+讀[架構取捨與 ADR](references/architecture-exploration.md)。結論記入開工包的「最難的部分與首版做法」；需要詳細文件時用 [`04-architecture-overview.md`](assets/04-architecture-overview.md)，重要決策用 [ADR 模板](assets/adr-template.md)寫成 `adr/ADR-001-*.md`。
 
 ### Phase 5 — Development Planning（開發規劃）
 
@@ -102,11 +120,11 @@ description: 把軟體產品構想變成一份能開工的「開工包」：要�
 
 **Quality Gate**　近期工作可追溯至範圍、驗收條件或風險，順序反映依賴，且首輪有可檢視的成果。容量或外部依賴未定時，提供候選順序，並將交期與承諾標為待確認。
 
-讀[開發規劃方法](references/development-planning.md)。產出 [`05-product-backlog.md`](assets/05-product-backlog.md) 與視需要的 [`06-iteration-plan.md`](assets/06-iteration-plan.md)。
+讀[開發規劃方法](references/development-planning.md)。第一輪記入開工包；需要完整待辦時用 [`05-product-backlog.md`](assets/05-product-backlog.md)。
 
 ## 交付與參考
 
 - **預設終點是[開工包](assets/00-kickoff-pack.md)。** Phase 3 完成後，或使用者說「整理一下」「下一步」「接下來呢」時，產出或更新開工包，而不是只列待驗證事項。開工包沒有填滿的欄位，就是下一輪要問的問題。
-- 階段結束時整理已確認結論、重要未決事項、關卡判定與下一步。需要留下決策紀錄時，附日期或版本與確認來源。跨文件以連結或簡短識別碼追溯。文件較多時可用 [Project Overview](assets/project-overview.md) 當入口。
+- 階段結束時整理已確認結論、重要未決事項、關卡判定與下一步。需要留下決策紀錄時，附日期或版本與確認來源。跨文件以連結或簡短識別碼追溯，開工包的「詳細文件」一節當入口。
 - [CPE 練習系統案例](examples/cpe-practice.md)串起五階段。[好壞案例](examples/before-and-after.md)示範提問、範圍、架構與驗收。案例中的情境和數字供說明用。
 - [行為評估](evals/README.md)供 Skill 維護與回歸測試使用。

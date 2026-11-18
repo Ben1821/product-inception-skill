@@ -54,19 +54,23 @@ zip -r product-inception.zip product-inception -x '*.DS_Store'
 
 到 **Customize › Skills**，按「+」→「Upload a skill」，上傳 zip。
 
-## 使用範例
+## 使用方式
 
-```
-/product-inception 我想做一個校園二手書交易平台
-```
+直接呼叫會從頭帶你走，最後產出開工包。也可以在後面接參數，直接進某個階段（Codex 把 `/` 換成 `$`）：
 
-```
-/product-inception 這是一學期的課程專題，兩個人，會 Swift。直接給我開工包草案
-```
+| 指令 | 做什麼 |
+|---|---|
+| `/product-inception 我想做校園二手書平台` | 從頭走，產出開工包 |
+| `/product-inception 探索` | 只做產品探索與找案例 |
+| `/product-inception 故事地圖` | 只做使用者故事地圖 |
+| `/product-inception mvp` | 只做 MVP 範圍與驗收 |
+| `/product-inception 架構` | 只做架構探索與 ADR |
+| `/product-inception 規劃` | 只做開發待辦 |
+| `/product-inception 開工包` | 依目前對話或文件整理開工包 |
+| `/product-inception 展開` | 把開工包展開成詳細文件 |
+| `/product-inception 審查 docs/03-mvp-spec.md` | 審查既有文件 |
 
-```
-/product-inception 只審查第 3 階段，文件在 docs/03-mvp-spec.md
-```
+預設只產出開工包；故事地圖、MVP 規格、架構、ADR、Backlog 等詳細文件，在你指定階段或說「展開」時才會產出。
 
 ## 檔案結構
 
@@ -74,7 +78,7 @@ zip -r product-inception.zip product-inception -x '*.DS_Store'
 product-inception/
 ├── SKILL.md          # 主要指示：目的、互動原則、品質關卡、五階段流程
 ├── references/       # 各階段方法（探索、故事地圖、MVP、架構、規劃、判斷規則）
-├── assets/           # 文件模板（開工包、Brief、Story Map、MVP Spec、ADR、Backlog…）
+├── assets/           # 開工包（預設產出）與詳細文件模板：故事地圖、MVP 規格、架構、ADR、Backlog
 ├── examples/         # 五階段完整案例、好壞對照
 └── evals/            # 行為評估案例，供維護與回歸測試
 ```
